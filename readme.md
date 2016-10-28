@@ -2,11 +2,6 @@
 
 This document introduces how to amend the communicate error between Cloudant&dashDB when they are both on dedicated environment which can be a playbook for Cloudant service team.
 
-The listed error messages can be found in either of
-
-* the dashboard
-* the log files
-
 ## Symptoms
 
 ### 1. Error message come out when click ‘Analytics’in the panel on the left side of Cloudant dashboard.
@@ -31,10 +26,6 @@ Query the region mapping for a specific cluster:
 
 `acurl https://dashdb-cloudant-regions.cloudant.com/region_definitions/<cluster_name>`
 
-Query existing mappings grouped by cluster:
-
-`acurl https://dashdb-cloudant-regions.cloudant.com/region_definitions/_design/regions/_view/by_cluster`
-
 Each entry in a region config doc will have a field for the 'dashdb url', keyed on 'dashdb'. This URL should be pointing to the dashDB service API. Currently there are only four valid entries:
   - US-S: https://dashdbrm.ng.bluemix.net
   - EU: https://dashdbrm.eu-gb.bluemix.net
@@ -44,7 +35,7 @@ Each entry in a region config doc will have a field for the 'dashdb url', keyed 
 There have been a few instances of the incorrect URL being used, likely the user passing it on (from the dashDB dashboard) through sales/support. These URLs look like so:
   - https://dashdb-enterprise-yp-lon02-03.services.eu-gb.bluemix.net
 
-This type of URL is used to access the dashDB console, DB2 instances, etc. It is not the correct URL to use for the integration configuration. Fix it if the region mapping is invalid.
+This type of URL is used to access the dashDB console, DB2 instances, etc. It is not the correct URL to use for the integration configuration. If meet this, fix it by changing `"dashdb_invalid":"https://dashdb-enterprise-yp-lon02-03.services.eu-gb.bluemix.net"` to `"dashdb": "https://dashdbrm.ng.bluemix.net"` for instance.
 
 ### 2. Activate this enterprise user by this command.
 
@@ -65,7 +56,7 @@ This type of URL is used to access the dashDB console, DB2 instances, etc. It is
 
 ### 2. Find the IP addresses assosiated with the customer from SDP clusters, then work with someone in #cdsni to open the firewall rules.
 
-* a. Find which sdp cluster is being used for a speific user by searching `index="*sdp*" "<account_name>"`.
+* a. Find which sdp cluster is being used for a speific user by searching `index="*sdp*" "<account_name>"` in splunk, or just from here:https://dashdb-cloudant-regions.cloudant.com/region_definitions/_design/regions/_view/by_sdp.
 * b. Find all nodes in this cluster by `knife node list | grep sdp`.
 * c. Log on to these nodes one by one and get the IP addresses from /etc/network/interfaces.(The load balancer will decide every time which node to route the request to in the given cluster. So we have to open every node.)
 
