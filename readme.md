@@ -47,7 +47,7 @@ An example of the response for the above command:
   ],
   "dashdb_invalid": "https://dashdb-enterprise-yp-lon02-03.services.eu-gb.bluemix.net",
   "sdp": "https://sdp-wdc01-1.cloudant.com:443",
-...
+  ...
 }
 ```
 
@@ -93,7 +93,7 @@ Add dashdb feature response:
 
 ### 1. Tell the customer that they need to create an official request to dashDB team with their own approval of opening the relevant firewalls.
 
-### 2. Find the IP addresses assosiated with the customer from SDP clusters, then work with someone in #cdsni to open the firewall rules.
+### 2. Find the IP addresses assosiated with the customer from SDP clusters, then work with someone in #cdsni to open the firewall rules(they need these IP addresses).
 
 * a. Find which sdp cluster is being used for a speific user by searching `index="*sdp*" "<account_name>"` in splunk, or just from here:https://dashdb-cloudant-regions.cloudant.com/region_definitions/_design/regions/_view/by_sdp.
 * b. Find all nodes in this cluster by `knife node list | grep sdp`.
