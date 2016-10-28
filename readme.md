@@ -18,6 +18,17 @@ This document introduces how to amend the communicate error between Cloudant&das
  
 `acurl https://<account_name>.cloudant.com/_api/v2/partners/dashdb/warehouse/service_status`
 
+An example of the response for the above command:
+```json
+{
+  "SDP_HOST": "sdp-wdc01-1.cloudant.com:443", 
+  "SDP": "ok", 
+  "REGION": "us-south", 
+  "DASHDB": "down", 
+  "DASHDB_HOST": "dashdb-enterprise4-iadb-wdc04-01.services.dal.bluemix.net"
+}
+```
+
 ## Solutions
 
 ### 1. Change the dashDB region if the region mapping is invalid.
@@ -25,6 +36,20 @@ This document introduces how to amend the communicate error between Cloudant&das
 Query the region mapping for a specific cluster:
 
 `acurl https://dashdb-cloudant-regions.cloudant.com/region_definitions/<cluster_name>`
+
+An example of the response for the above command:
+```json
+{
+  "_id": "...",
+  "region": "us-south",
+  "cloudant_clusters": [
+    "..."
+  ],
+  "dashdb_invalid": "https://dashdb-enterprise-yp-lon02-03.services.eu-gb.bluemix.net",
+  "sdp": "https://sdp-wdc01-1.cloudant.com:443",
+...
+}
+```
 
 Each entry in a region config doc will have a field for the 'dashdb url', keyed on 'dashdb'. This URL should be pointing to the dashDB service API. Currently there are only four valid entries:
   - US-S: https://dashdbrm.ng.bluemix.net
@@ -40,6 +65,20 @@ This type of URL is used to access the dashDB console, DB2 instances, etc. It is
 ### 2. Activate this enterprise user by this command.
 
 `clou user dashdb --set_enterprise <account_name>`
+
+An example of the response for the above command:
+```json
+Current dashdb feature data:
+{
+    "dashdb": null
+}
+
+Add dashdb feature response:
+{
+    "ok": true, 
+    "feature": "dashdb"
+}
+```
 
 *Note*: After this, customer should see 'create warehouse' icon from dashboard instead of 'dashDB error' again.
 
