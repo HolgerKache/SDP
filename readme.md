@@ -46,8 +46,7 @@ An example of the response for the above command:
     "..."
   ],
   "dashdb_invalid": "https://dashdb-enterprise-yp-lon02-03.services.eu-gb.bluemix.net",
-  "sdp": "https://sdp-wdc01-1.cloudant.com:443",
-  ...
+  "sdp": "https://sdp-wdc01-1.cloudant.com:443"
 }
 ```
 
