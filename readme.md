@@ -85,8 +85,8 @@ Add dashdb feature response:
 
 ### Error message come out when type the 'create warehouse' icon on the bottom of 'Warehouses/Create a Warehouse' page
 
-**A typical error message**: Error:Cannot connect to database.[[statusCode=40000,errorCode=40004,errorMsg=Cannot connect to database.
-[com.ibm.db2/cc.am.DisconnectNonTransientConnectionException:[jcc][t4][2043][11550][4.18.60] Error opening socket to server dashdb-enterprise*.bluemix.net on port * with message: Connection timed out.ERRORCODE=-4499, SQLSTATE=08001
+    Error:Cannot connect to database.[[statusCode=40000,errorCode=40004,errorMsg=Cannot connect to database.
+    [com.ibm.db2/cc.am.DisconnectNonTransientConnectionException:[jcc][t4][2043][11550][4.18.60] Error opening socket to server dashdb-enterprise*.bluemix.net on port * with message: Connection timed out.ERRORCODE=-4499, SQLSTATE=08001
 
 ## Solutions
 
