@@ -1,6 +1,6 @@
 # SDP - error handing of the communication between dedicated Cloudant&dashDB
 
-This document introduces how to amend the communicate error between Cloudant&dashDB when they are both on dedicated environment which can be a playbook for Cloudant service team.
+This document introduces how to amend the communicate error between Cloudant&dashDB when they are both on dedicated environment.
 
 ## Symptoms
 
